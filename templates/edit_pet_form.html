@@ -19,16 +19,23 @@
     <div class="col-sm-6">
       <form method="POST">
         {{ form.hidden_tag() }}
-        {% for field in form if field.widget.input != 'hidden' %}
-        <div class="form-group mt-3">
+        {% for field in form if field.widget.input_type != 'hidden' %}
+        <div class="group-form mt-3">
+          {% if field.name != "available"%}
           {{field.label}}
           {{field(class_="form-control")}}
+          {% endif %}
           {% for err in field.errors %}
           {{err}}
           {% endfor %}
         </div>
         {% endfor %}
-        <button class="btn btn-lg btn-success">Save</button>
+        <div class="group-form mt-3">
+          {{form.available.label}}
+          {{form.available}}
+        </div>
+        
+        <button class="btn btn-lg btn-success mt-2">Save</button>
       </form>
     </div>
   </div>

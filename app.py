@@ -14,6 +14,9 @@ toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
 
+default_image = "https://www.pngkey.com/png/full/842-8429401_pomeranian-02-yappicon-pomeranian-03-yappicon-cartoon.png"
+
+
 @app.route('/')
 def home_page():
 
@@ -33,10 +36,9 @@ def add_pet():
     photo_url = form.photo_url.data
     age = form.age.data
     notes = form.notes.data
-    available = bool(form.available.data)
     
     # add data from form to database
-    pet = Pet(name=name, species=species, photo_url=photo_url, age=age, notes=notes, available=available)
+    pet = Pet(name=name, species=species, photo_url=photo_url, age=age, notes=notes)
     db.session.add(pet)
     db.session.commit()
     flash(f'{pet.name} added.')
@@ -59,7 +61,7 @@ def edit_form(pet_id):
 
   pet = Pet.query.get(pet_id)
 
-  # populate form with current data
+  # populate form with current data in the database
   form = EditForm(obj=pet)
 
   if form.validate_on_submit():
@@ -69,6 +71,7 @@ def edit_form(pet_id):
     pet.age = form.age.data
     pet.notes = form.notes.data
     pet.available = bool(form.available.data)
+    db.session.add(pet)
     db.session.commit()
     return redirect('/')
   else:
