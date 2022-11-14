@@ -6,7 +6,6 @@
 {% block content %}
 
 <h1 class="display-3 text-center">Edit {{pet.name}}</h1>
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-3">
@@ -15,15 +14,12 @@
   </div>
 </div>
 
-
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-6">
-      {{ form.hidden_tag() }}
       <form method="POST">
-        {% for field in form if field.widget.input != 'hidden' %}
         {{ form.hidden_tag() }}
+        {% for field in form if field.widget.input != 'hidden' %}
         <div class="form-group mt-3">
           {{field.label}}
           {{field(class_="form-control")}}
@@ -36,9 +32,6 @@
       </form>
     </div>
   </div>
-  
-  
 </div>
-
 
 {% endblock %}
