@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title%} {{pet.name}}'s Profile {% endblock%}
+
+
+{% block content %}
+
+<div class="container">
+  <h1 class="display-2 text-center">{{pet.name}}</h1>
+  <div class="row justify-content-center">
+    <div class="col-sm-2">
+      <img class="img-fluid" src="{{pet.photo_url}}">
+      <p>Species: {{pet.species}}</p>
+      <p>Age: {{pet.age}}</p>
+      <p>Notes: {{pet.notes}}</p>
+      <p>Available?: {{pet.available}}</p>
+      <a href="/" class="btn btn-lg btn-danger mt-3">Back</a>
+      <a href="/pets/{{pet.id}}/edit" class="btn btn-lg btn-info mt-3">Edit</a>
+    </div>
+  </div>
+</div>
+
+  
+  
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Petly {% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="display-4 mt-3">Adopt a pet today!</h1>
+  {% for pet in pets %}
+  <div class="mt-5">
+    <h3>
+      <a href="/pets/{{pet.id}}/display">{{pet.name}}</a>
+    </h3>
+    {% if pet.photo_url %}
+    <img class="img-thumbnail" src="{{pet.photo_url}}">
+    {% endif %}
+    {% if pet.available %}
+    <p>
+      {{pet.name}} is <b>available!</b>
+    </p>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+  
+{% endblock %}

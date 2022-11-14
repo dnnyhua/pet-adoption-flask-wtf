@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+  <title>{% block title %}{% endblock%}</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="/" class="navbar-brand ms-3">Petly</a>
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a href="/pets/new" class="nav-link">Add Pet</a>
+      </li>
+    </ul>
+
+  </nav>
+
+  {% block content %}
+
+  {% endblock %}
+</body>
+</html>
